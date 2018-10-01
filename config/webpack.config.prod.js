@@ -189,7 +189,7 @@ module.exports = {
     // https://github.com/facebook/create-react-app/issues/290
     // `web` extension prefixes have been added for better support
     // for React Native Web.
-    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
+    extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx', '.ts', '.tsx'],
     alias: {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
@@ -209,24 +209,6 @@ module.exports = {
     rules: [
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
-
-      // First, run the linter.
-      // It's important to do this before Babel processes the JS.
-      {
-        test: /\.(js|jsx)$/,
-        enforce: 'pre',
-        use: [
-          {
-            options: {
-              formatter: require.resolve('react-dev-utils/eslintFormatter'),
-              eslintPath: require.resolve('eslint'),
-              
-            },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: paths.appSrc,
-      },
       {
         // `mjs` support is still in its infancy in the ecosystem, so we don't
         // support it.
@@ -255,8 +237,8 @@ module.exports = {
           // Process application JS with Babel.
           // The preset includes JSX, Flow, and some ESnext features.
           {
-            test: /\.(js|jsx)$/,
-            include: paths.appSrc,
+            test: /\.(js|jsx|ts|tsx)$/,
+            include: paths.appSrc, // Only compile appSrc.
             use: [
               // This loader parallelizes code compilation, it is optional but
               // improves compile time on larger projects
@@ -270,7 +252,7 @@ module.exports = {
                   customize: require.resolve(
                     'babel-preset-react-app/webpack-overrides'
                   ),
-                  
+
                   plugins: [
                     [
                       require.resolve('babel-plugin-named-asset-import'),
@@ -288,40 +270,6 @@ module.exports = {
                   // Save disk space when time isn't as important
                   cacheCompression: true,
                   compact: true,
-                },
-              },
-            ],
-          },
-          // Process any JS outside of the app with Babel.
-          // Unlike the application JS, we only compile the standard ES features.
-          {
-            test: /\.js$/,
-            exclude: /@babel(?:\/|\\{1,2})runtime/,
-            use: [
-              // This loader parallelizes code compilation, it is optional but
-              // improves compile time on larger projects
-              require.resolve('thread-loader'),
-              {
-                loader: require.resolve('babel-loader'),
-                options: {
-                  babelrc: false,
-                  configFile: false,
-                  compact: false,
-                  presets: [
-                    [
-                      require.resolve('babel-preset-react-app/dependencies'),
-                      { helpers: true },
-                    ],
-                  ],
-                  cacheDirectory: true,
-                  // Save disk space when time isn't as important
-                  cacheCompression: true,
-                  
-                  // If an error happens in a package, it's possible to be
-                  // because it was compiled. Thus, we don't want the browser
-                  // debugger to show the original code. Instead, the code
-                  // being evaluated would be much more helpful.
-                  sourceMaps: false,
                 },
               },
             ],
@@ -390,7 +338,7 @@ module.exports = {
             // it's runtime that would otherwise be processed through "file" loader.
             // Also exclude `html` and `json` extensions so they get processed
             // by webpacks internal loaders.
-            exclude: [/\.(js|jsx)$/, /\.html$/, /\.json$/],
+            exclude: [/\.(js|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
               name: 'static/media/[name].[hash:8].[ext]',
             },
