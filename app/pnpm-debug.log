@@ -1,0 +1,11 @@
+---
+  0 error pnpm: 
+    message: 
+      code: "UNEXPECTED_STORE"
+      expectedStorePath: "/home/colin/Workspace/src/github.com/coldog/cra-typescript/.store/2"
+      actualStorePath: "/home/colin/Workspace/src/github.com/coldog/test-app/.store/2"
+    err: 
+      name: "Error"
+      message: "Unexpected store used for installation"
+      code: "UNEXPECTED_STORE"
+      stack: "Error: Unexpected store used for installation\n    at Object.checkCompatibility [as default] (/usr/lib/node_modules/pnpm/lib/node_modules/supi/lib/api/checkCompatibility/index.js:13:15)\n    at Object.<anonymous> (/usr/lib/node_modules/pnpm/lib/node_modules/supi/lib/api/getContext.js:44:45)\n    at Generator.next (<anonymous>)\n    at fulfilled (/usr/lib/node_modules/pnpm/lib/node_modules/supi/lib/api/getContext.js:4:58)\n    at <anonymous>"
