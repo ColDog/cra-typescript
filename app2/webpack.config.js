@@ -12,7 +12,8 @@ module.exports = {
       {
         test: /\.(js|jsx|ts|tsx)$/,
         loader: require.resolve('babel-loader'),
-        exclude: []
+        exclude: [],
+        include: [],
       }
     ]
   },

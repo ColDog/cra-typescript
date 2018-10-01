@@ -5,5 +5,7 @@
     "noEmit": true,                         /* Do not emit outputs. */
     "strict": true,                         /* Enable all strict type-checking options. */
     "allowSyntheticDefaultImports": true    /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-  }
+  },
+  "include": ["src/**/*", "node_modules/**/*"],
+  "exclude": []
 }
