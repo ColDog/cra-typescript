@@ -5,7 +5,7 @@ import * as serviceWorker from "./service-worker";
 
 const App = () => <h2>Hello</h2>;
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // Register the service worker.
 serviceWorker.register({});
