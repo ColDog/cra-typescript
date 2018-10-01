@@ -108,11 +108,5 @@
       "tsx",
       "node"
     ]
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-typescript",
-      "react-app"
-    ]
   }
 }

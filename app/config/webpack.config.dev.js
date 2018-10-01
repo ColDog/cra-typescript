@@ -145,7 +145,7 @@ module.exports = {
       // To fix this, we prevent you from importing files out of src/ -- if you'd like to,
       // please link the files into your node_modules/ and let module-resolution kick in.
       // Make sure your source files are compiled, as they will not be processed in any way.
-      new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
+      // new ModuleScopePlugin(paths.appSrc, [paths.appPackageJson]),
     ],
   },
   module: {
@@ -183,7 +183,11 @@ module.exports = {
           // The preset includes JSX, Flow, and some ESnext features.
           {
             test: /\.(js|jsx|ts|tsx)$/,
-            include: paths.appSrc, // Only compile appSrc.
+            include: [
+              paths.appSrc,
+              '/home/colin/Workspace/src/github.com/coldog/cra-typescript/lib'
+            ],
+            exclude: [],
             use: [
               // This loader parallelizes code compilation, it is optional but
               // improves compile time on larger projects

@@ -1,13 +1,7 @@
 export PATH := $(PATH):$(PWD)/node_modules/.bin
 
-install: unpackage
-	@pnpm recursive install --ignore-scripts
-
-package:
-	@tar -zcf store.tar.gz .store
-
-unpackage:
-	@tar -zxf store.tar.gz
+install:
+	@yarn install --ignore-scripts
 
 clean:
-	@rm -rf **/node_modules .store
+	@rm -rf node_modules **/node_modules **/dist
