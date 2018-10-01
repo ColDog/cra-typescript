@@ -1,11 +1,17 @@
 {
   "compilerOptions": {
-    "target": "esnext",                     /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', or 'ESNEXT'. */
-    "module": "commonjs",                   /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
-    "noEmit": true,                         /* Do not emit outputs. */
-    "strict": true,                         /* Enable all strict type-checking options. */
-    "allowSyntheticDefaultImports": true    /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-  },
-  "include": ["src/**/*", "node_modules/**/*"],
-  "exclude": []
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "rootDir": "./",
+    "jsx": "react",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "skipLibCheck": true,
+    "sourceMap": true
+  }
 }
